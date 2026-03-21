@@ -1,9 +1,15 @@
+import './styles/theme.css';
+import './styles/global.css'; 
+import { Heading } from './components/Heading';
+import { Timer } from "lucide-react"
+
+
+
 export function App() {
   return (
-    <div>
-      <h1>Bem-vindo a primeira aula jsx</h1>
-      <h2>nossa aula de introdução</h2>
-    </div>
-  );
+    <>
+      <Heading>olá mundo 3</Heading>
+    </> 
+);
 }
 

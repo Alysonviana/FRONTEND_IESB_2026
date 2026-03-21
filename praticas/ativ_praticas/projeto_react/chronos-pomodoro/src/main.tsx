@@ -1,8 +1,10 @@
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";  
+import { App } from "./App";
+
 
 createRoot(document.getElementById("root") as HTMLElement).render(
-  <div>
-    <h1>Bem-vindo a primeira aula jsx</h1>
-    <h2>nossa aula de introdução</h2>
-  </div>
+  <StrictMode>
+    <App/>
+  </StrictMode>
 );
