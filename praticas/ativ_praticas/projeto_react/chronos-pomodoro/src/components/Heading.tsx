@@ -1,13 +1,13 @@
-import type React from "react";
+import React from "react";
 
 type HeadersProps = {
-  Children: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export function Heading({Children}: HeadersProps) {
-  return( 
+export function Heading({ children }: HeadersProps) {
+  return (
     <h1>
-      {Children}
-      </h1>
+      {children}
+    </h1>
   );
 }
