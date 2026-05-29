@@ -1,18 +1,17 @@
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
+generator client {
+  provider = "prisma-client-js"
+}
+
 model Settings {
-  id             Int      @id @default(1)
+  id             Int @id @default(autoincrement())
   workTime       Int
   shortBreakTime Int
   longBreakTime  Int
-  updatedAt      DateTime @updatedAt
 }
 
 model Task {
@@ -23,7 +22,4 @@ model Task {
   startDate     BigInt
   completeDate  BigInt?
   interruptDate BigInt?
-  createdAt     DateTime @default(now())
-
-  @@index([startDate])
 }
