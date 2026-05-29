@@ -5,7 +5,7 @@ import { Heading } from '../../components/Heading';
 import { MainTemplate } from '../../templates/MainTemplate';
 
 import styles from './styles.module.css';
-import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
+import { useTaskContext } from '../../contexts/TaskContext';
 import { formatDate } from '../../utils/formatDate';
 import { getTaskStatus } from '../../utils/getTaskStatus';
 import { sortTasks, type SortTasksOptions } from '../../utils/sortTasks';
@@ -82,7 +82,7 @@ export function History() {
     <MainTemplate>
       <Container>
         <Heading>
-          <span>Histórico</span>
+          <span>History</span>
           {hasTasks && (
             <span className={styles.buttonContainer}>
               <DefaultButton
