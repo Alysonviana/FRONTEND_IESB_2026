@@ -1,10 +1,3 @@
-/*
-  Warnings:
-
-  - Added the required column `userId` to the `Settings` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `userId` to the `Task` table without a default value. This is not possible if the table is not empty.
-
-*/
 -- CreateTable
 CREATE TABLE "User" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -16,10 +9,8 @@ CREATE TABLE "User" (
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- RedefineTables
-PRAGMA defer_foreign_keys=ON;
-PRAGMA foreign_keys=OFF;
-CREATE TABLE "new_Settings" (
+-- CreateTable
+CREATE TABLE "Settings" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "workTime" INTEGER NOT NULL DEFAULT 25,
     "shortBreakTime" INTEGER NOT NULL DEFAULT 5,
@@ -28,11 +19,9 @@ CREATE TABLE "new_Settings" (
     "userId" INTEGER NOT NULL,
     CONSTRAINT "Settings_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
-INSERT INTO "new_Settings" ("id", "longBreakTime", "shortBreakTime", "updatedAt", "workTime") SELECT "id", "longBreakTime", "shortBreakTime", "updatedAt", "workTime" FROM "Settings";
-DROP TABLE "Settings";
-ALTER TABLE "new_Settings" RENAME TO "Settings";
-CREATE UNIQUE INDEX "Settings_userId_key" ON "Settings"("userId");
-CREATE TABLE "new_Task" (
+
+-- CreateTable
+CREATE TABLE "Task" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL,
     "duration" INTEGER NOT NULL,
@@ -44,12 +33,12 @@ CREATE TABLE "new_Task" (
     "userId" INTEGER NOT NULL,
     CONSTRAINT "Task_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
-INSERT INTO "new_Task" ("completeDate", "createdAt", "duration", "id", "interruptDate", "name", "startDate", "type") SELECT "completeDate", "createdAt", "duration", "id", "interruptDate", "name", "startDate", "type" FROM "Task";
-DROP TABLE "Task";
-ALTER TABLE "new_Task" RENAME TO "Task";
-CREATE INDEX "Task_startDate_idx" ON "Task"("startDate");
-PRAGMA foreign_keys=ON;
-PRAGMA defer_foreign_keys=OFF;
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Settings_userId_key" ON "Settings"("userId");
+
+-- CreateIndex
+CREATE INDEX "Task_startDate_idx" ON "Task"("startDate");
