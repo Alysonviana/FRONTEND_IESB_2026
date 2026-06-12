@@ -21,18 +21,17 @@
 */
 :root {
   /* 🎭 Tons de Cinza (cores dinâmicas que mudam entre claro/escuro) */
-  --gray-100: #e6e9f0;
-  /* Cinza mais claro (usado para fundos no modo escuro) */
-  --gray-200: #cdd3e1;
-  --gray-300: #aab3cc;
-  --gray-400: #555f7d;
-  --gray-500: #454f6a;
-  --gray-600: #363d56;
-  --gray-700: #272f43;
+  --gray-100: #e8f0ff;
+  --gray-200: #c7d9f7;
+  --gray-300: #9bb8ed;
+  --gray-400: #5f86d4;
+  --gray-500: #3a64bb;
+  --gray-600: #2a4d9c;
+  --gray-700: #1d3b80;
   /* Bordas e separadores */
-  --gray-800: #181f2e;
+  --gray-800: #102862;
   /* Fundo de cartões e áreas destacadas */
-  --gray-900: #0a0f1a;
+  --gray-900: #061b47;
   /* Fundo principal do site */
 
   /* 🌿 Cores Primárias (cores fixas - NÃO mudam com o tema) */
